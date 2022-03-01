@@ -14,11 +14,13 @@ let showPhones = [];
 let restPhones = [];
 
 // Add click event handler to search button
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener("click", event => {
+  event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>';
   const searchText = searchInput.value.trim();
   const inputError = document.getElementById("input-error");
 
   if (!searchText) {
+    event.target.innerHTML = "Search";
     return (inputError.textContent = "Please enter a search term");
   }
 
@@ -29,6 +31,7 @@ searchButton.addEventListener("click", () => {
     .then((data) => {
       searchResult.classList.remove("hidden");
       cards.textContent = "";
+      event.target.innerHTML = 'Search';
 
       if (!data.status) {
         return searchError.classList.remove("hidden");
