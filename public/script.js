@@ -1,6 +1,7 @@
 const cards = document.querySelector(".cards");
 const searchInput = document.getElementById("search");
 const searchButton = document.getElementById("search-button");
+const showMore = document.getElementById("show-more");
 const phoneDetailsCard = document.getElementById("phone-details");
 
 const searchResult = document.getElementById("search-results");
@@ -9,12 +10,14 @@ const searchError = document.getElementById("search-error");
 const PHONE_API = `https://openapi.programming-hero.com/api/phones?search`;
 const DETAIL_API = `https://openapi.programming-hero.com/api/phone`;
 
+let showPhones = [];
+let restPhones = [];
 
 // Add click event handler to search button
 searchButton.addEventListener("click", () => {
   const searchText = searchInput.value.trim();
   const inputError = document.getElementById("input-error");
-  
+
   if (!searchText) {
     return (inputError.textContent = "Please enter a search term");
   }
@@ -34,29 +37,41 @@ searchButton.addEventListener("click", () => {
       }
 
       const allPhones = data.data;
-      const showPhones = allPhones.slice(0, 20);
+      showPhones = allPhones.slice(0, 20);
+      restPhones = allPhones.slice(20);
 
       showCards(showPhones);
+
+      if (restPhones.length > 0) {
+        showMore.classList.remove("hidden");
+      } else {
+        showMore.classList.add("hidden");
+      }
     });
 });
 
-// Shows cards into the DOM/UI
-const showCards = (phones) => {
-  let html = "";
-  phones.forEach((phone) => {
-    html += `
-          <div class="card">
-            <div class="image">
-              <img src="${phone.image}" alt="">
-            </div>
+// get phone card
+const getPhoneCard = phone => {
+  return `
+  <div class="card">
+    <div class="image">
+      <img src="${phone.image}" alt="">
+    </div>
 
-            <div class="info">
-              <h2>${phone.phone_name}</h2>
-              <h3>${phone.brand}</h3>
-              <button onclick="showDetails(event, '${phone.slug}')">Details</button>
-            </div>
-          </div>
-          `;
+    <div class="info">
+      <h2>${phone.phone_name}</h2>
+      <h3>${phone.brand}</h3>
+      <button onclick="showDetails(event, '${phone.slug}')">Details</button>
+    </div>
+  </div>
+`;
+};
+
+// Shows cards into the DOM/UI
+const showCards = showPhones => {
+  let html = "";
+  showPhones.forEach((phone) => {
+    html += getPhoneCard(phone);
   });
 
   cards.innerHTML = html;
@@ -71,7 +86,7 @@ const closeDetails = () => {
 
 // Show details function -> invoked from the details button of each card
 const showDetails = (event, id) => {
-  event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>'
+  event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>';
 
   fetch(`${DETAIL_API}/${id}`)
     .then((res) => res.json())
@@ -117,8 +132,8 @@ const showDetails = (event, id) => {
       }
 
       phoneDetailsCard.classList.remove("hidden");
-      event.target.innerHTML = 'Details';
-      document.querySelector('body').classList.add('overflow-y-hidden');
+      event.target.innerHTML = "Details";
+      document.querySelector("body").classList.add("overflow-y-hidden");
       document.querySelector("body").classList.remove("overflow-y-scroll");
     });
 };
@@ -132,3 +147,10 @@ const addRow = (table, title, value) => {
   </tr>
   `;
 };
+
+// Shows all phones
+showMore.addEventListener('click', () =>{
+  const allPhones = showPhones.concat(restPhones);
+  showCards(allPhones);
+  showMore.classList.add('hidden');
+})
