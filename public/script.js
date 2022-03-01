@@ -55,3 +55,64 @@ const showCards = (phones) => {
 
   cards.innerHTML = html;
 };
+
+const closeDetails = () => {
+  phoneDetailsCard.classList.add("hidden");
+};
+
+const showDetails = (id) => {
+  fetch(`${DETAIL_API}/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const phoneData = data.data;
+      phoneDetailsCard.querySelector("#details-image").src = phoneData.image;
+      phoneDetailsCard.querySelector("#details-name").textContent =
+        phoneData.name;
+      if (phoneData.releaseDate) {
+        phoneDetailsCard.querySelector("#details-status").textContent =
+          phoneData.releaseDate;
+      } else {
+        phoneDetailsCard.querySelector("#details-status").textContent =
+          "Unreleased";
+      }
+
+      const mainFeaturesTable =
+        phoneDetailsCard.querySelector("#main-features");
+      const otherFeaturesTable =
+        phoneDetailsCard.querySelector("#other-features");
+
+      mainFeaturesTable.textContent = "";
+      otherFeaturesTable.textContent = "";
+
+      addRow(mainFeaturesTable, "Brand", phoneData.brand);
+      addRow(mainFeaturesTable, "Storage", phoneData.mainFeatures.storage);
+      addRow(
+        mainFeaturesTable,
+        "Display Size",
+        phoneData.mainFeatures.displaySize
+      );
+      addRow(mainFeaturesTable, "Chipset", phoneData.mainFeatures.chipSet);
+      addRow(mainFeaturesTable, "Memory", phoneData.mainFeatures.memory);
+
+      addRow(
+        otherFeaturesTable,
+        "Sensors",
+        phoneData.mainFeatures.sensors.join(", ")
+      );
+
+      for (const key in phoneData.others) {
+        addRow(otherFeaturesTable, key, phoneData.others[key]);
+      }
+
+      phoneDetailsCard.classList.remove("hidden");
+    });
+};
+
+const addRow = (table, title, value) => {
+  table.innerHTML += `
+  <tr class="text-left">
+    <th class="pr-3">${title}</th>
+    <td id="details-chipset">${value}</td>
+  </tr>
+  `;
+};
