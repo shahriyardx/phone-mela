@@ -47,7 +47,7 @@ const showCards = (phones) => {
             <div class="info">
               <h2>${phone.phone_name}</h2>
               <h3>${phone.brand}</h3>
-              <button onclick="showDetails('${phone.slug}')">Details</button>
+              <button onclick="showDetails(event, '${phone.slug}')">Details</button>
             </div>
           </div>
           `;
@@ -60,7 +60,9 @@ const closeDetails = () => {
   phoneDetailsCard.classList.add("hidden");
 };
 
-const showDetails = (id) => {
+const showDetails = (event, id) => {
+  event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>'
+  
   fetch(`${DETAIL_API}/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -105,6 +107,7 @@ const showDetails = (id) => {
       }
 
       phoneDetailsCard.classList.remove("hidden");
+      event.target.innerHTML = 'Details';
     });
 };
 
