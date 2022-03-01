@@ -58,11 +58,13 @@ const showCards = (phones) => {
 
 const closeDetails = () => {
   phoneDetailsCard.classList.add("hidden");
+  document.querySelector("body").classList.remove("overflow-y-hidden");
+  document.querySelector("body").classList.add("overflow-y-scroll");
 };
 
 const showDetails = (event, id) => {
   event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>'
-  
+
   fetch(`${DETAIL_API}/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -108,6 +110,8 @@ const showDetails = (event, id) => {
 
       phoneDetailsCard.classList.remove("hidden");
       event.target.innerHTML = 'Details';
+      document.querySelector('body').classList.add('overflow-y-hidden');
+      document.querySelector("body").classList.remove("overflow-y-scroll");
     });
 };
 

@@ -536,6 +536,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full{
   height: 100% !important;
 }
+.max-h-\[95vh\]{
+  max-height: 95vh !important;
+}
 .w-\[150px\]{
   width: 150px !important;
 }
@@ -596,6 +599,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .gap-10{
   gap: 2.5rem !important;
+}
+.overflow-y-hidden{
+  overflow-y: hidden !important;
+}
+.overflow-y-scroll{
+  overflow-y: scroll !important;
 }
 .rounded-md{
   border-radius: 0.375rem !important;
