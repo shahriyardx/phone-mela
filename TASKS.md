@@ -22,4 +22,4 @@
 ## Optional
 - [x] Show All Button for products more than 20
 - [x] Loading Spinner
-- [ ] Case insensitivity in search
+- [x] Case insensitivity in search
