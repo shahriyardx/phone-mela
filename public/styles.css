@@ -539,8 +539,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full{
   height: 100% !important;
 }
-.max-h-\[95vh\]{
-  max-height: 95vh !important;
+.max-h-\[90vh\]{
+  max-height: 90vh !important;
 }
 .w-\[150px\]{
   width: 150px !important;
@@ -626,6 +626,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-indigo-600{
   --tw-border-opacity: 1 !important;
   border-color: rgb(79 70 229 / var(--tw-border-opacity)) !important;
+}
+.bg-gray-200{
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity)) !important;
 }
 .bg-black\/5{
   background-color: rgb(0 0 0 / 0.05) !important;
@@ -713,6 +717,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1 !important;
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
 }
+.text-red-500{
+  --tw-text-opacity: 1 !important;
+  color: rgb(239 68 68 / var(--tw-text-opacity)) !important;
+}
 .text-red-600{
   --tw-text-opacity: 1 !important;
   color: rgb(220 38 38 / var(--tw-text-opacity)) !important;
@@ -720,11 +728,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-indigo-600{
   --tw-text-opacity: 1 !important;
   color: rgb(79 70 229 / var(--tw-text-opacity)) !important;
-}
-.ring-1{
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important;
 }
 .ring-blue-500{
   --tw-ring-opacity: 1 !important;
@@ -735,7 +738,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1.25rem;
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 2.5rem;
 }
 
 @media (min-width: 640px){
