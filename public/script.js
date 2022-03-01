@@ -10,6 +10,7 @@ const PHONE_API = `https://openapi.programming-hero.com/api/phones?search`;
 const DETAIL_API = `https://openapi.programming-hero.com/api/phone`;
 
 
+// Add click event handler to search button
 searchButton.addEventListener("click", () => {
   const searchText = searchInput.value.trim();
   const inputError = document.getElementById("input-error");
@@ -39,6 +40,7 @@ searchButton.addEventListener("click", () => {
     });
 });
 
+// Shows cards into the DOM/UI
 const showCards = (phones) => {
   let html = "";
   phones.forEach((phone) => {
@@ -60,12 +62,14 @@ const showCards = (phones) => {
   cards.innerHTML = html;
 };
 
+// Closes details popup
 const closeDetails = () => {
   phoneDetailsCard.classList.add("hidden");
   document.querySelector("body").classList.remove("overflow-y-hidden");
   document.querySelector("body").classList.add("overflow-y-scroll");
 };
 
+// Show details function -> invoked from the details button of each card
 const showDetails = (event, id) => {
   event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>'
 
@@ -119,6 +123,7 @@ const showDetails = (event, id) => {
     });
 };
 
+// Add row to the table
 const addRow = (table, title, value) => {
   table.innerHTML += `
   <tr class="text-left">
