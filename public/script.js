@@ -12,13 +12,13 @@ const DETAIL_API = `https://openapi.programming-hero.com/api/phone`;
 
 searchButton.addEventListener("click", () => {
   const searchText = searchInput.value.trim();
-  const searchError = document.getElementById("search-error");
+  const inputError = document.getElementById("input-error");
   
   if (!searchText) {
-    return searchError.textContent = "Please enter a search term";
+    return (inputError.textContent = "Please enter a search term");
   }
 
-  searchError.textContent = "";
+  inputError.textContent = "";
 
   fetch(`${PHONE_API}=${searchText}`)
     .then((res) => res.json())
