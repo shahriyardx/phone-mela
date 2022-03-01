@@ -16,7 +16,7 @@ let restPhones = [];
 // Add click event handler to search button
 searchButton.addEventListener("click", event => {
   event.target.innerHTML = '<i class="bx bx-loader-alt animate-spin"></i>';
-  const searchText = searchInput.value.trim();
+  const searchText = searchInput.value.trim().toLowerCase();
   const inputError = document.getElementById("input-error");
 
   if (!searchText) {

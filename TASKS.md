@@ -21,5 +21,5 @@
 
 ## Optional
 - [x] Show All Button for products more than 20
-- [ ] Loading Spinner
+- [x] Loading Spinner
 - [ ] Case insensitivity in search
