@@ -61,5 +61,32 @@
         </div>
       </div>
     </section>
+
+    <section class="bg-black/30 fixed inset-0 w-full h-full p-5 hidden" id="phone-details">
+      <div class="max-w-3xl mx-auto bg-white p-5 rounded-md relative">
+        <header class="sm:flex sm:gap-5 mb-10">
+          <div class="flex items-center mb-5">
+            <img class="w-auto sm:w-52" src="" id="details-image">
+          </div>
+          <div class="">
+            <h2 class="text-2xl font-semibold text-indigo-600" id="details-name"></h2>
+            <span class="" id="details-status"></span>
+
+            <table class="table-auto mt-3" id="main-features">
+            </table>
+          </div>
+        </header>
+
+        <div>
+          <h2 class="text-3xl font-semibold text-indigo-600 text-center mb-3">Details</h2>
+          <table class="table-auto" id="other-features">
+          </table>
+        </div>
+
+        <div class="text-2xl absolute top-0 right-0 p-3 cursor-pointer" onclick="closeDetails()">
+          <i class="bx bx-x"></i>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
