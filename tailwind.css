@@ -3,3 +3,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cards {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5;
+}
+
+.cards .card {
+  @apply p-5 shadow-md w-full text-center rounded-md;
+}
+
+.cards .card .image {
+  @apply flex justify-center;
+}
+
+.cards .card .image img {
+  @apply mb-3;
+}
+
+.cards .card .info h2 {
+  @apply text-lg font-bold;
+}
+
+.cards .card .info h3 {
+  @apply text-sm;
+}
+
+.cards .card .info button {
+  @apply bg-indigo-600 text-white px-4 py-2 mt-3 w-full rounded-full;
+}
