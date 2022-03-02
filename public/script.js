@@ -94,6 +94,11 @@ const showDetails = (event, id) => {
   fetch(`${DETAIL_API}/${id}`)
     .then((res) => res.json())
     .then((data) => {
+      if (!data.status) {
+        alert("Something went wrong. Please refresh the page and try again.")
+        return event.target.innerHTML = "Details";
+      }
+      
       const phoneData = data.data;
       phoneDetailsCard.querySelector("#details-image").src = phoneData.image;
       phoneDetailsCard.querySelector("#details-name").textContent =
